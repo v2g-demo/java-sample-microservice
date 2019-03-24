@@ -1,3 +1,17 @@
 language: java
 jdk:
   - openjdk11
+
+services:
+  - docker
+
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build . --tag bronin/java-sample-microservice
+  - docker push  bronin/java-sample-microservice:latest
+
+#deploy:
+#  provider: script
+#  script: bash docker push  bronin/java-sample-microservice:latest
+#  on:
+#    branch: master
