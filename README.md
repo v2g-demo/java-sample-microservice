@@ -3,3 +3,9 @@
 
 # java-sample-microservice
 Java 11 Spring Boot and Spring Cloud sample microservice
+
+## Run service
+
+```
+docker run --rm -p8080:8080  bronin/java-sample-microservice:latest
+```
